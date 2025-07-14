@@ -20,7 +20,6 @@ export interface ISwitcherClause {
   value: unknown;
 }
 
-
 /**
  * Defines the set of possible cases for the `switcher` function.
  *
