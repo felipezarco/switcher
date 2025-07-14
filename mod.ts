@@ -1,10 +1,10 @@
 interface IOptions {
-  default: any;
+  default: unknown;
 }
 
 interface ISwitchObject {
-  case: (variable: any) => boolean;
-  value: any;
+  case: (variable: unknown) => boolean;
+  value: unknown;
 }
 
 /**
@@ -17,10 +17,10 @@ interface ISwitchObject {
  */
 
 export default function switcher(
-  variable: any,
+  variable: unknown,
   switchObjectOrArray: object | ISwitchObject[] | undefined,
   options?: IOptions,
-): any {
+): unknown {
   if (
     (typeof switchObjectOrArray === "object" && switchObjectOrArray !== null)
   ) {
