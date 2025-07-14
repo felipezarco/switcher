@@ -12,12 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
+      id-token: write  
     steps:
       - uses: actions/checkout@v3
+
+      - name: Use Deno 2.4.1
         uses: denoland/setup-deno@v1
         with:
           deno-version: 2.4.1
+
       - run: deno fmt --check
       - run: deno lint
       - run: deno test
