@@ -2,8 +2,7 @@
 [![JSR](https://jsr.io/badges/@zarco/switcher)](https://jsr.io/@zarco/switcher)
 [![JSR Scope](https://jsr.io/badges/@zarco)](https://jsr.io/@zarco)
 
-I want to assign a **const**, but **its value depends on another variable
-value**.
+I want to assign a **const**, but **its value depends on another variable**.
 
 [switcher](https://jsr.io/@zarco/switcher) is a simple way to conditionally
 assign a constant value. A cleaner alternative to switch statements with IIFE
@@ -31,9 +30,26 @@ import switcher from "jsr:@zarco/switcher";
 
 ## Usage
 
-> _Example: My const `binomialName` should be assigned to 'Felis catus' if
-> `animal` value is 'cat'. However it should be 'Panthera leo' if `animal` is
-> 'lion', and 'Canis familiaris' if `animal` is 'dog'._
+#### Example 1
+
+I want `databaseName` to be conditioned by `process.env.NAME`.
+
+```typescript
+const databaseName = switcher(process.env.NAME, {
+  local: "LOCAL_DATABASE",
+  development: "DEVELOPMENT_DATABASE",
+  staging: "STAGING_DATABASE",
+  production: "PRODUCTION_DATABASE",
+});
+
+console.log(process.env.NAME); // "production"
+console.log(databaseName); // "PRODUCTION_DATABASE"
+```
+
+> When `process.env.NAME` is "production", `databaseName` is set to
+> "PRODUCTION_DATABASE".
+
+#### Example 2
 
 ```typescript
 import switcher from "@zarco/switcher";
@@ -48,6 +64,9 @@ const binomialName = switcher(animal, {
 
 console.log(binomialName); // Output: Panthera leo
 ```
+
+> The constant binomialName is set to "Felis catus" if animal is "cat",
+> "Panthera leo" if it's "lion", and "Canis familiaris" if it's "dog".
 
 ## Defaults
 
@@ -73,11 +92,12 @@ const binomialName = switcher(animal, {
 
 _Not everything fits in an object key!_
 
-You may want to pass a regex or a custom function to check against.
+You may want to use a regex or a custom function as a condition.
 
 You can achieve that by using `switcher` with a more complex structure.
 
-You can define cases as an array of **case functions** and values!
+You can define the second argument as an **array of case functions** and values
+instead of an object!
 
 ```typescript
 const binomialName = switcher(animal, [
@@ -96,7 +116,7 @@ const binomialName = switcher(animal, [
 ], { default: "Uncataloged species" });
 ```
 
-> Note: case functions should return a **boolean** value
+> Note: each case function should return a **boolean**.
 
 More details about each method can be found at the
 [API documentation](https://jsr.io/@zarco/switcher/doc).
