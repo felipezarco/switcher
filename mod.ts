@@ -1,12 +1,24 @@
+/**
+ * An interface representing the options for the switcher function.
+ */
 export interface ISwitcherOptions {
   default: unknown;
 }
 
+/**
+ * An interface representing a switcher clause.
+ * It contains a case function that checks if the variable matches
+ * and a value that is returned if the case matches.
+ */
 export interface ISwitcherClause {
   case: (variable: unknown) => boolean;
   value: unknown;
 }
 
+/**
+ * A type that can be either an object with string keys and unknown values,
+ * an array of ISwitcherClause objects, or undefined.
+ */
 export type TSwitcherClauseDefinition = object | ISwitcherClause[] | undefined;
 
 /**
@@ -17,7 +29,6 @@ export type TSwitcherClauseDefinition = object | ISwitcherClause[] | undefined;
  * @param options - Optional parameter to specify a default value if no case matches.
  * @returns The value corresponding to the matched case, or the default value if no match is found.
  */
-
 export default function switcher(
   variable: unknown,
   switcherClauseDefinition: TSwitcherClauseDefinition,
