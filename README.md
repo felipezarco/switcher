@@ -89,8 +89,7 @@ const binomialName = switcher(animal, [
   ], { default: 'Uncataloged species' })
 ````
 
-> [!Note] Note
-> Case functions should return a **boolean** value
+> Note: case functions should return a **boolean** value
 
 More details about each method can be found at the [API documentation](https://jsr.io/@zarco/switcher/doc).
 
