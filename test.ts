@@ -1,7 +1,5 @@
 import switcher from "./mod.ts";
-import {
-  assertEquals,
-} from "https://deno.land/std@0.224.0/assert/mod.ts";
+import { assertEquals } from "https://deno.land/std@0.224.0/assert/mod.ts";
 
 Deno.test("switcher: object style - returns correct value", () => {
   const animal = "cat";
@@ -101,7 +99,6 @@ Deno.test("switcher: array of case functions - regex match", () => {
   ], { default: "Uncataloged species" });
   assertEquals(binomialName, "Felis catus");
 });
-
 
 Deno.test("switcher: array of case functions - other evaluation", () => {
   const animal = "wildcat";
