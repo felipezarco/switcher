@@ -1,33 +1,45 @@
 /**
- * An interface representing the options for the switcher function.
+ * Options for the `switcher` function.
+ *
+ * @property default - The fallback value to return if no case matches.
  */
 export interface ISwitcherOptions {
   default: unknown;
 }
 
 /**
- * An interface representing a switcher clause.
- * It contains a case function that checks if the variable matches
- * and a value that is returned if the case matches.
+ * A single case definition for the `switcher` function.
+ *
+ * Each case includes a predicate function and the value to return when matched.
+ *
+ * @property case - A function that returns `true` when the input matches this case.
+ * @property value - The value returned when the case is matched.
  */
 export interface ISwitcherClause {
   case: (variable: unknown) => boolean;
   value: unknown;
 }
 
+
 /**
- * A type that can be either an object with string keys and unknown values,
- * an array of ISwitcherClause objects, or undefined.
+ * Defines the set of possible cases for the `switcher` function.
+ *
+ * Can be either:
+ * - an object with string keys and unknown values;
+ * - an array of `ISwitcherClause` objects;
+ * - or `undefined`.
  */
 export type TSwitcherClauseDefinition = object | ISwitcherClause[] | undefined;
 
 /**
- * A simple switcher function that can handle both object and array based switch cases.
+ * A utility function that selects a value based on a given input.
  *
- * @param variable - The variable to be checked against the cases.
- * @param switcherClauseDefinition - An object or an array of switch objects to check against.
- * @param options - Optional parameter to specify a default value if no case matches.
- * @returns The value corresponding to the matched case, or the default value if no match is found.
+ * Supports both object-based and function-based switch cases.
+ *
+ * @param variable - The input value to match against.
+ * @param switcherClauseDefinition - An object or an array of switch cases to match against.
+ * @param options - Optional configuration, including a default value if no match is found.
+ * @returns The matched value or the default value (if specified).
  */
 export default function switcher(
   variable: unknown,
