@@ -1,4 +1,4 @@
-A simple library to check if a value is what you expect it to be.
+A simple utility for selecting values based on a key or condition — a clean, declarative alternative to switch statements with IIFE wrappers.
 
 ## Usage
 
@@ -10,50 +10,46 @@ Node:
 npx jsr add @zarco/switcher
 ```
 
-Deno:
-
-```sh
-import is from "jsr:@zarco/switcher"
+Then, import it:
+```ts
+import switcher from '@zarco/switcher'
 ```
 
-### Usage
+Or with Deno:
 
 ```ts
-import * as is from "@zarco/switcher";
-
-if (is.string("hello")) {
-  // do something
-}
+import switcher from "jsr:@zarco/switcher"
 ```
 
 ## Usage
 
-I want to assign a const, but the value can will depend on another variable value.
+I want to assign a **const**, but **its value depends on another variable value**.
 
-Example, `binomialName` has to be 'Felis catus' if `animal` is 'cat',
+> _Example: My const `binomialName` should be assigned to 'Felis catus' if `animal` value is 'cat'.
+However it should be 'Panthera leo' if `animal` is 'lion', and 'Canis familiaris' if `animal` is 'dog'._
 
 ````typescript
 import switcher from '@zarco/switcher'
+
+const animal = 'lion'
 
 const binomialName = switcher(animal, {
   'cat': 'Felis catus',
   'lion': 'Panthera leo',
   'dog': 'Canis familiaris'
 })
+
+console.log(binomialName) // Output: Panthera leo
 ````
-
-It will however be
-
-'Panthera leo' if `animal` is 'lion', and 'Canis familiar
-'Canis familiaris' if `animal` is 'dog'.
 
 ## Defaults
 
-What about a default value? You can use the `default` method to set a default
-value if the value is not what you expect it to be.
+*What about a default value?*
+
+You can use the `default` option to set a default.
 
 ```ts
-import * as is from "@zarco/switcher";
+import switcher from '@zarco/switcher'
 
 const animal = 'platypus';
 
@@ -61,23 +57,20 @@ const binomialName = switcher(animal, {
   'cat': 'Felis catus',
   'lion': 'Panthera leo',
   'dog': 'Canis familiaris'
-}).default('Uncataloged species');
-
+}, {
+  default: 'Uncataloged species'
+})
 ```
 
 ## Non-keyable values
 
-````
-Not everything fits as an object key
-.
-You may want to pass a regex, a function, or even an array of values to check against.
+_Not everything fits in an object key!_
 
-You can do that by using the `switcher` function with a more complex structure.
+You may want to pass a regex or a custom function to check against.
 
-You can define the switch as an array of **case functions** and values!
+You can achieve that by using `switcher` with a more complex structure.
 
-````
-(These case functions must always return boolean)
+You can define cases as an array of **case functions** and values!
 
 ````typescript
 const binomialName = switcher(animal, [
@@ -94,12 +87,12 @@ const binomialName = switcher(animal, [
       value: 'Canis familiaris'
     }
   ], { default: 'Uncataloged species' })
-
 ````
 
+> [!Note] Note
+> Case functions should return a **boolean** value
 
-More details about each method can be found in the
-[API documentation](https://jsr.io/@zarco/switcher/doc).
+More details about each method can be found at the [API documentation](https://jsr.io/@zarco/switcher/doc).
 
 ## Contributing
 
