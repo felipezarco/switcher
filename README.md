@@ -1,4 +1,6 @@
-A simple utility for selecting values based on a key or condition — a clean, declarative alternative to switch statements with IIFE wrappers.
+I want to assign a **const**, but **its value depends on another variable value**.
+
+[switcher](https://jsr.io/@zarco/switcher) is a simple way to conditionally assign a constant value. A cleaner alternative to switch statements with IIFE wrappers.
 
 ## Install
 
@@ -21,7 +23,6 @@ import switcher from "jsr:@zarco/switcher"
 
 ## Usage
 
-I want to assign a **const**, but **its value depends on another variable value**.
 
 > _Example: My const `binomialName` should be assigned to 'Felis catus' if `animal` value is 'cat'.
 However it should be 'Panthera leo' if `animal` is 'lion', and 'Canis familiaris' if `animal` is 'dog'._
