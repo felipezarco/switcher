@@ -1,8 +1,6 @@
 A simple utility for selecting values based on a key or condition — a clean, declarative alternative to switch statements with IIFE wrappers.
 
-## Usage
-
-### Install
+## Install
 
 Node:
 
