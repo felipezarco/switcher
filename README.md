@@ -1,5 +1,5 @@
-
-[![JSR Score](https://jsr.io/badges/@zarco/switcher/score)](https://jsr.io/@zarco/switcher) [![JSR](https://jsr.io/badges/@zarco/switcher)](https://jsr.io/@zarco/switcher) 
+[![JSR Score](https://jsr.io/badges/@zarco/switcher/score)](https://jsr.io/@zarco/switcher)
+[![JSR](https://jsr.io/badges/@zarco/switcher)](https://jsr.io/@zarco/switcher)
 [![JSR Scope](https://jsr.io/badges/@zarco)](https://jsr.io/@zarco)
 
 I want to assign a **const**, but **its value depends on another variable
