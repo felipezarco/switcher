@@ -1,34 +1,25 @@
-name: CI
+# .github/workflows/publish.yml
+
+name: Test and Publish
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  fmt-check:
+  publish:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Use Deno 2.4.1
+      - uses: actions/checkout@v3
         uses: denoland/setup-deno@v1
         with:
           deno-version: 2.4.1
-
-      - name: Run deno fmt --check
-        run: deno fmt --check
-
-      - name: Run deno lint
-        run: deno lint
-
-      - name: Run deno test
-        run: deno test --allow-all
-
-      - name: Publish to JSR
-        run: npx jsr publish
+      - run: deno fmt --check
+      - run: deno lint
+      - run: deno test
+      - uses: actions/checkout@v4
+      - run: npx jsr publish
