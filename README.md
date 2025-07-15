@@ -129,6 +129,8 @@ submit your own [pull request](https://github.com/felipezarco/switcher/compare).
 
 Thanks for your interest in contributing to this repo!
 
+If not, give it a star ⭐ at [github](https://github.com/felipezarco/switcher)!
+
 ## Author
 
 [Luiz Felipe Zarco](https://github.com/felipezarco) (felipezarco@hotmail.com)
